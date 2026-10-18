@@ -1,0 +1,29 @@
+{
+  "version": "0.2.1",
+  "sourceRevision": "6a0c8cd2411d80ffce2ed2304fcd1fddeff6cefc",
+  "signedInstallationVerified": true,
+  "dashboardExactMatch": true,
+  "configurationPreserved": {
+    "appFlags": true,
+    "remapperRules": true,
+    "dnsResolvers": true,
+    "dnsDomains": true
+  },
+  "diagnostics": {
+    "sections": 14,
+    "available": 14
+  },
+  "backgroundAfterUiClose": true,
+  "rootAgentConnected": true,
+  "rootAgentUid": 0,
+  "coldBootOfThisVersion": "not tested",
+  "debloaterFixture": {
+    "disableEnableApi": true,
+    "disableEnableUi": true,
+    "bootFlagRoundTrip": true,
+    "launchStopUi": true,
+    "uninstallUi": true,
+    "nativeRemovalVerified": true,
+    "fixtureRemoved": true
+  }
+}

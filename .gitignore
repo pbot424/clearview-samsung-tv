@@ -1,0 +1,30 @@
+# Local device captures (may contain addresses and application arguments)
+/diagnostics/*.json
+/diagnostics/*.txt
+/research/tv-binaries/
+# External research with unverified redistribution provenance
+/research/ntksys/
+# Downloaded SDKs, reference assemblies and analysis dependencies
+/tools/*/
+# Generated payloads and packages
+**/__pycache__/
+*.pyc
+*.dll
+*.exe
+*.so
+*.wgt
+*.tpk
+*.zip
+*.whl
+*.nupkg
+/research/tizen55-port/payload/
+# Credentials and local settings
+.env
+.env.*
+*.p12
+*.pfx
+*.pem
+*.key
+*.crt
+*.cer
+*.log
