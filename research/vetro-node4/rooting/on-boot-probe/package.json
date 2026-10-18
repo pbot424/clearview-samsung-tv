@@ -1,8 +1,8 @@
 {
-  "name": "vetro-signing-tools",
+  "name": "clearview-signing-tools",
   "version": "0.2.0",
   "private": true,
-  "description": "Build-time signing dependencies for the optional Vetro TV integration.",
+  "description": "Build-time signing dependencies for the optional ClearView TV integration.",
   "scripts": {
     "build": "node ../build.cjs"
   },

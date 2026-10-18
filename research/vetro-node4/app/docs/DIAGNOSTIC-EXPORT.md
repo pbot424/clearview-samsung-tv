@@ -1,6 +1,6 @@
 # Diagnostic report export
 
-The Diagnostics panel downloads `vetro-diagnostics.json` through GET `/diagnostics/download`. The report stays on the user's computer. Vetro does not upload it or record watched content.
+The Diagnostics panel downloads `clearview-diagnostics.json` through GET `/diagnostics/download`. The report stays on the user's computer. ClearView does not upload it or record watched content.
 
 The `vetro-diagnostics` format has schema version 1. `appVersion` and `sourceRevision` identify the installed package; an unbuilt development checkout may have a null revision. Each of the 14 sections contains `status` (`ok`, `unavailable`, or `timeout`) and, when available, `data`. Readers only inspect existing state; no flags, processes, settings, or services are changed. Reads have a 20-second report deadline and concurrent downloads share the same collection. A timed-out platform read may still finish after the report returns.
 

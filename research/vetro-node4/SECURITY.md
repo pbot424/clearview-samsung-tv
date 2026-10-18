@@ -1,6 +1,6 @@
 # Security and responsible reports
 
-Vetro is experimental privileged software. The browser management interface uses
+ClearView is experimental privileged software. The browser management interface uses
 plain HTTP without a user login. Deploy only on a trusted isolated LAN. Do not
 forward its ports, expose it publicly or enable unrestricted access from other
 networks. Root-agent authentication is a separate internal protocol and does not

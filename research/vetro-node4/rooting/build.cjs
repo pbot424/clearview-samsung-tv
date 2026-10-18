@@ -1,6 +1,6 @@
 'use strict';
 
-// Builds the full Vetro package from app sources + TV platform adapter.
+// Builds the full ClearView package from app sources + TV platform adapter.
 // It never touches the TV.
 
 const fs = require('fs');
@@ -10,7 +10,7 @@ const signingRequire = require('module').createRequire(path.join(__dirname,'on-b
 const ROOT = path.join(__dirname,'..','app');
 const CERTS = path.join(__dirname, 'on-boot-probe', 'certs');
 const DIST = path.join(__dirname, 'dist');
-const OUT = process.env.OUT ? path.resolve(process.env.OUT) : path.join(DIST, 'vetro.wgt');
+const OUT = process.env.OUT ? path.resolve(process.env.OUT) : path.join(DIST, 'clearview.wgt');
 const DIST_P12 = process.env.DIST_P12
     ? path.resolve(process.env.DIST_P12)
     : path.join(CERTS, 'samsung', 'distributor.p12');

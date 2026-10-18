@@ -189,7 +189,7 @@ def record(args):
         (out / 'plan.json').write_text(json.dumps(vars(args), indent=2) + '\n')
         print('ARMED — ' + str(out), flush=True)
         print('Mode: ' + args.mode + '. This tool never reboots the TV or opens apps on it.', flush=True)
-        print('Type a letter + Enter: r reboot requested, o Vetro opened, a ok apps,', flush=True)
+        print('Type a letter + Enter: r reboot requested, o ClearView opened, a ok apps,', flush=True)
         print('p ok packages, f report sent, q finish. Ctrl-C still saves.', flush=True)
         started = time.monotonic()
         due = started
@@ -230,7 +230,7 @@ def record(args):
                     event('sample', {'results': row})
                     up = row['/status']['ok']
                     if up != last_up:
-                        print('Vetro HTTP: ' + ('reachable' if up else 'unreachable'), flush=True)
+                        print('ClearView HTTP: ' + ('reachable' if up else 'unreachable'), flush=True)
                         last_up = up
                     summary = summarize(baseline, rows, markers, args.mode)
                     for name in summary['firstObserved']:
@@ -262,7 +262,7 @@ def main():
     parser.add_argument('action', choices=('preflight', 'record'))
     tv_ip = os.environ.get('TV_IP')
     parser.add_argument('--base', default='http://' + tv_ip + ':8099' if tv_ip else None,
-                        help='Vetro service URL, e.g. http://TV_IP:8099 (default: from TV_IP)')
+                        help='ClearView service URL, e.g. http://TV_IP:8099 (default: from TV_IP)')
     parser.add_argument('--mode', choices=('passive', 'visual'), default='passive')
     parser.add_argument('--out')
     parser.add_argument('--duration', type=float, default=600)

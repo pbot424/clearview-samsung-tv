@@ -1,11 +1,11 @@
 name: TV diagnostic report
-description: Share a redacted Vetro report for compatibility analysis.
+description: Share a redacted ClearView report for compatibility analysis.
 title: "[Log report] "
 body:
   - type: markdown
     attributes:
       value: |
-        Download the JSON file from Vetro → Diagnostics → Download report.
+        Download the JSON file from ClearView → Diagnostics → Download report.
         Reports in a public issue are public. Review the file before attaching it.
         Do not upload raw logs, passwords, addresses, serial numbers or viewing history.
         Automated feedback is preliminary; it does not prove persistence or safe settings.
@@ -25,14 +25,14 @@ body:
   - type: input
     id: version
     attributes:
-      label: Vetro version or commit
+      label: ClearView version or commit
     validations:
       required: true
   - type: upload
     id: report
     attributes:
-      label: Vetro diagnostic report
-      description: Attach one vetro-diagnostics.json file, maximum 2 MiB.
+      label: ClearView diagnostic report
+      description: Attach one clearview-diagnostics.json file, maximum 2 MiB.
     validations:
       required: true
       accept: ".json"

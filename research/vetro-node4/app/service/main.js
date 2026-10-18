@@ -1,6 +1,6 @@
 'use strict';
 require('./node4-compat.js');
-// Vetro application: telemetry, dashboard and feature endpoints.
+// ClearView application: telemetry, dashboard and feature endpoints.
 // Platform operations use the adapter documented in PLATFORM.md.
 var fs = require('fs');
 var http = require('http');
@@ -31,9 +31,9 @@ var privacy = new (require('./privacy.js').Privacy)(agentExecute);
 var menuSettings = new (require('./menu-settings.js').Catalog)(agentExecute);
 var quickSettings = require('./quick-settings.js');
 var leftovers = new (require('./leftovers.js').Leftovers)(agentExecute);
-// Components whose disabled flag Vetro may change: verified ACR set plus Quick Settings groups.
+// Components whose disabled flag ClearView may change: verified ACR set plus Quick Settings groups.
 var TOGGLE_IDS = debloat.VERIFIED_GLOBAL_IDS.concat(quickSettings.ALLOWED_IDS);
-var PORT = Number(process.env.VETRO_PORT) || 8099;
+var PORT = Number(process.env.CLEARVIEW_PORT || process.env.VETRO_PORT) || 8099;
 
 // --- telemetry reader (service side, uid 5001) ---------------------------
 // Reads /proc and /sys directly via fs. No platform command is needed. Every read
@@ -120,7 +120,7 @@ function downloadDiagnostics(res) {
     }).finally(function () { diagnosticPending = null; });
     return diagnosticPending.then(function (report) {
         if (res.destroyed || res.writableEnded) return;
-        res.setHeader('Content-Disposition', 'attachment; filename="vetro-diagnostics.json"');
+        res.setHeader('Content-Disposition', 'attachment; filename="clearview-diagnostics.json"');
         res.setHeader('Cache-Control', 'no-store');
         serveJson(res, report);
     }).catch(function () { serveJson(res, {error:'Diagnostic export unavailable'}, 503); });
@@ -586,7 +586,7 @@ http.createServer(function (req, res) {
     if (url === '/' || url === '/index.html') return serveHtml(res, dashboardHtml());
     serveJson(res, { error: 'not found' }, 404);
 }).listen(PORT, function () {
-    console.log('VETRO listening on ' + PORT);
+    console.log('ClearView listening on ' + PORT);
 });
 
 platform.start();

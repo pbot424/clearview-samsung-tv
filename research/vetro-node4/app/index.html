@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="utf-8"><title>Vetro</title>
+<head><meta charset="utf-8"><title>ClearView</title>
 <script src="$WEBAPIS/webapis/webapis.js"></script></head>
 <body style="font-family:monospace;background:#0d1117;color:#e6edf3">
-<h2>Vetro</h2>
+<h2>ClearView</h2>
 <p>Dashboard at <code>http://&lt;TV&gt;:8099/</code> · Tizen/Samsung public API probe</p>
 <pre id="out">Starting…</pre>
 <script>
@@ -39,7 +39,7 @@ function sendReport() {
 }
 function tryConnect(port) {
   return new Promise(function (resolve, reject) {
-    var ws = new WebSocket('ws://127.0.0.1:' + port + '/api/v2/channels/samsung.remote.control?name=' + btoa('Vetro'));
+    var ws = new WebSocket('ws://127.0.0.1:' + port + '/api/v2/channels/samsung.remote.control?name=' + btoa('ClearView'));
     var t = setTimeout(function () { try { ws.close(); } catch (e) {} reject(new Error('timeout')); }, 4000);
     ws.onopen = function () { clearTimeout(t); ws.close(); resolve('open'); };
     ws.onerror = function () { clearTimeout(t); reject(new Error('refused')); };

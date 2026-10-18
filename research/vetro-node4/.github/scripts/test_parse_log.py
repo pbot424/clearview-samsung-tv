@@ -60,8 +60,8 @@ class ParserTests(unittest.TestCase):
         with self.assertRaises(ValueError):p.report_text('https://github.com/user-attachments/files/1/a.json https://github.com/user-attachments/files/2/b.json')
 
     def test_issue_selection(self):
-        self.assertTrue(p.issue_matches({'title':'[Log report] Q80','body':'### Vetro diagnostic report'}))
-        self.assertFalse(p.issue_matches({'title':'ordinary issue','body':'### Vetro diagnostic report'}))
+        self.assertTrue(p.issue_matches({'title':'[Log report] Q80','body':'### ClearView diagnostic report'}))
+        self.assertFalse(p.issue_matches({'title':'ordinary issue','body':'### ClearView diagnostic report'}))
 
     def test_comment_updates_bot_only(self):
         calls=[]

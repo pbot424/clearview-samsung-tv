@@ -1,6 +1,8 @@
-# Install Vetro on your TV
+> Experimental source instructions. A signed ClearView installer and TU7000 startup support have not been verified; consult the [current compatibility findings](../../../tizen55-port/README.md) before attempting installation.
 
-[Back to Vetro](../../README.md) · [Compatibility and root](../../README.md#root-on-the-tv)
+# Install ClearView on your TV
+
+[Back to ClearView](../../README.md) · [Compatibility and root](../../../tizen55-port/README.md)
 
 
 ### 1. Check requirements
@@ -37,22 +39,22 @@ cd rooting/on-boot-probe
 npm ci
 cd ..
 # Supply certificate variables securely before running this command.
-OUT=/tmp/vetro.wgt node build.cjs
+OUT=/tmp/clearview.wgt node build.cjs
 ```
 
 The resulting integration WGT contains privileged components. There is no universal certificate or guaranteed root compatibility. The bundled integration derives from [Samsung TV root research](https://github.com/chris-ritsen/samsung-tv-root); consult its compatibility information and [integration notes](../../rooting/README.md). Do not treat successful signing as successful privilege acquisition.
 
 ### 4. Install and verify
 
-Select the connected TV target in Tizen Studio Device Manager, permit app installation for your certificate profile, and install `/tmp/vetro.wgt`. Alternatively, use the configured Tizen CLI target:
+Select the connected TV target in Tizen Studio Device Manager, permit app installation for your certificate profile, and install `/tmp/clearview.wgt`. Alternatively, use the configured Tizen CLI target:
 
 ```sh
-tizen install -n /tmp/vetro.wgt -t YOUR_TV_TARGET
+tizen install -n /tmp/clearview.wgt -t YOUR_TV_TARGET
 ```
 
-Open **Vetro** once to run the public API probe. Visit `http://TV_IP:8099/` from a browser on the same LAN. Check app inventory, probe status and platform connectivity. A visible icon or accepted installation is not proof that the background service or root agent works.
+Open **ClearView** once to run the public API probe. Visit `http://TV_IP:8099/` from a browser on the same LAN. Check app inventory, probe status and platform connectivity. A visible icon or accepted installation is not proof that the background service or root agent works.
 
-After a cold boot, Vetro’s background startup and root reacquisition can take **up to 90 seconds**. Wait before treating an unavailable dashboard or agent as a failure.
+Upstream testing observed background startup and root reacquisition taking **up to 90 seconds** on its test TV. This timing and autonomous startup have not been verified for ClearView on the TU7000.
 
-To test unattended startup, record a boot checkpoint privately, fully power off the TV, unplug it for 30 seconds, turn it on, and check `/status` and `/monitor?scope=summary` without opening Vetro or issuing a launch command. Confirm a new boot, running service and authenticated UID-0 agent. Keep boot identifiers private. Standby is not a cold boot. See [release audit](RELEASE-AUDIT.md) for current results.
+To test unattended startup, record a boot checkpoint privately, fully power off the TV, unplug it for 30 seconds, turn it on, and check `/status` and `/monitor?scope=summary` without opening ClearView or issuing a launch command. Confirm a new boot, running service and authenticated UID-0 agent. Keep boot identifiers private. Standby is not a cold boot. See [release audit](RELEASE-AUDIT.md) for current results.
 

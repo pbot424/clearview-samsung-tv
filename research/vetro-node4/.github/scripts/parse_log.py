@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Deterministic Vetro report analysis. Never execute or quote submitted logs."""
+"""Deterministic ClearView report analysis. Never execute or quote submitted logs."""
 import argparse
 import json
 import os
@@ -66,8 +66,8 @@ def analyze(text):
         root = 'Reported connected with UID 0' if connected is True and type(uid) is int and uid == 0 else 'Reported disconnected' if connected is False else 'Reported connected without UID-0 confirmation' if connected is True else 'Unknown (platform section missing or incomplete)'
         findings.append(('Root agent', root))
         running = p.get('running')
-        findings.append(('Vetro service', 'Reported running at capture time' if running is True else 'Reported stopped' if running is False else 'Unknown'))
-        findings.append(('Persistence / background execution', 'Unknown; requires a new cold boot without manually opening Vetro'))
+        findings.append(('ClearView service', 'Reported running at capture time' if running is True else 'Reported stopped' if running is False else 'Unknown'))
+        findings.append(('Persistence / background execution', 'Unknown; requires a new cold boot without manually opening ClearView'))
         net = data('network')
         services = net.get('services', [])
         active = any(isinstance(x, dict) and x.get('state') in ('ready', 'online') for x in services) if isinstance(services, list) else False
@@ -98,7 +98,7 @@ def analyze(text):
 
 
 def markdown(result):
-    lines = [MARKER, '### Vetro diagnostic review', '', 'Thanks for sharing the report. This automated check reads technical fields; it does not run commands or change your TV.', '', '| Check | Result |', '| --- | --- |']
+    lines = [MARKER, '### ClearView diagnostic review', '', 'Thanks for sharing the report. This automated check reads technical fields; it does not run commands or change your TV.', '', '| Check | Result |', '| --- | --- |']
     lines += [f'| {key} | {value} |' for key, value in result['findings']]
     lines += ['', '**Presumed compatibility:** ' + result['compatibility'], '', '**Error signatures:** ' + (', '.join(result['signatures']) or 'No known signatures found. This does not prove the absence of errors.'), '', 'The report describes one capture. It cannot establish app loading times, FPS, a complete dependency graph, or safe debloat targets. Any recommended write needs a separate validation and restore test.', '', 'A maintainer can use this report to investigate controls and propose a tested change. Please do not attach passwords, raw browsing history or private device identifiers.']
     return '\n'.join(lines) + '\n'
@@ -131,7 +131,7 @@ def download(url):
         raise ValueError('Unsupported attachment URL')
     # No API token/cookies are forwarded to attachment/CDN hosts.
     opener = urllib.request.build_opener(SafeRedirect())
-    req = urllib.request.Request(url, headers={'Accept-Encoding': 'identity', 'User-Agent': 'Vetro-log-review'})
+    req = urllib.request.Request(url, headers={'Accept-Encoding': 'identity', 'User-Agent': 'ClearView-log-review'})
     started = time.monotonic()
     with opener.open(req, timeout=10) as response:
         if not download_host(response.geturl()):
@@ -156,7 +156,7 @@ def download(url):
 
 
 def issue_matches(issue):
-    return isinstance(issue, dict) and str(issue.get('title', '')).startswith('[Log report]') and '### Vetro diagnostic report' in str(issue.get('body', ''))
+    return isinstance(issue, dict) and str(issue.get('title', '')).startswith('[Log report]') and '### ClearView diagnostic report' in str(issue.get('body', ''))
 
 
 def report_text(body):
@@ -173,7 +173,7 @@ def report_text(body):
 
 
 def api(path, token, method='GET', data=None):
-    req = urllib.request.Request('https://api.github.com' + path, method=method, headers={'Authorization': 'Bearer ' + token, 'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'Vetro-log-review'}, data=None if data is None else json.dumps(data).encode())
+    req = urllib.request.Request('https://api.github.com' + path, method=method, headers={'Authorization': 'Bearer ' + token, 'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'ClearView-log-review'}, data=None if data is None else json.dumps(data).encode())
     with urllib.request.urlopen(req, timeout=15) as response:
         return json.load(response)
 
@@ -206,13 +206,13 @@ def main():
         event = json.loads(args.event.read_text())
         issue = event.get('issue')
         if not issue_matches(issue):
-            print('Not a Vetro log report; skipped')
+            print('Not a ClearView log report; skipped')
             return 0
         try:
             text = report_text(issue.get('body', ''))
             result = markdown(analyze(text))
         except (ValueError, TypeError, RecursionError, OSError, UnicodeError):
-            result = MARKER + '\n### Vetro diagnostic review\n\nThe report could not be read. Attach one UTF-8 JSON report downloaded from Diagnostics, no larger than 2 MiB. GitHub attachment hosts and schema version 1 are supported. Do not include private logs or credentials. No compatibility result is available.\n'
+            result = MARKER + '\n### ClearView diagnostic review\n\nThe report could not be read. Attach one UTF-8 JSON report downloaded from Diagnostics, no larger than 2 MiB. GitHub attachment hosts and schema version 1 are supported. Do not include private logs or credentials. No compatibility result is available.\n'
     elif args.file:
         if args.file.stat().st_size > MAX_BYTES:
             parser.error('Report exceeds the 2 MiB limit')

@@ -36,10 +36,14 @@ full application port, and automatic startup have not been demonstrated on this 
 
 ## Development
 
-The original dependency names and directories are retained for reproducibility and
-attribution. ClearView is the name of this project; the vendored application's
-screens and historical documentation still use its upstream name. Upstream claims
-about other TVs are not verification on the TU7000.
+The working application in `research/vetro-node4/` uses ClearView branding. Original
+directory names, installed package IDs, saved-state paths, MQTT topics and diagnostic
+schema identifiers are retained for compatibility. `CLEARVIEW_PORT` and
+`CLEARVIEW_SOURCE_REVISION` are the preferred environment variables; the legacy
+`VETRO_*` equivalents still work. Downloaded diagnostic files use the ClearView name.
+The unchanged source in `research/vetro/`, license notices, historical test records
+and original screenshots retain upstream branding and provenance. Upstream claims
+about other TVs are not verification on the TU7000 or on a ClearView release.
 
 Local application and integration checks, with a current Node.js installation:
 

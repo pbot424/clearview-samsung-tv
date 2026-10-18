@@ -1,6 +1,6 @@
 'use strict';
 
-// Wire Vetro's telemetry into an MQTT broker (for Home Assistant and other
+// Wire ClearView's telemetry into an MQTT broker (for Home Assistant and other
 // smart-home stacks). Pure Node, depends only on ./mqtt.js.
 //
 // Configuration is read from a JSON file the service polls, so the broker can
@@ -37,7 +37,7 @@ function validateConfig(p,previous){previous=previous||{};if(p.enabled!=null&&ty
  if(p.tls!=null&&typeof p.tls!=='boolean')throw Error('Invalid TLS option');
  var prefix=p.topicPrefix||'vetro';if(typeof prefix!=='string'||!/^[-A-Za-z0-9_.]+(?:\/[-A-Za-z0-9_.]+)*$/.test(prefix)||prefix.length>120)throw Error('Invalid topic prefix');
  ['username','password','deviceName','clientId','ca'].forEach(function(k){if(p[k]!=null&&(typeof p[k]!=='string'||p[k].length>(k==='ca'?32768:k==='password'?1024:120)))throw Error('Invalid field: '+k);});
- return {enabled:enabled,host:p.host,port:p.port||(p.tls?8883:1883),tls:p.tls===true,ca:p.ca||null,username:p.username||null,password:Object.prototype.hasOwnProperty.call(p,'password')?p.password:previous.password||null,topicPrefix:prefix,deviceName:p.deviceName||'Vetro',clientId:p.clientId||previous.clientId||newId()};
+ return {enabled:enabled,host:p.host,port:p.port||(p.tls?8883:1883),tls:p.tls===true,ca:p.ca||null,username:p.username||null,password:Object.prototype.hasOwnProperty.call(p,'password')?p.password:previous.password||null,topicPrefix:prefix,deviceName:p.deviceName||'ClearView',clientId:p.clientId||previous.clientId||newId()};
 }
 function saveConfig(cfg){var temp=CONFIG_PATH_PERSISTENT+'.tmp';fs.writeFileSync(temp,JSON.stringify(cfg)+'\n',{mode:0o600});fs.chmodSync(temp,0o600);fs.renameSync(temp,CONFIG_PATH_PERSISTENT);}
 
@@ -82,7 +82,7 @@ MqttBridge.prototype._discover = function () {
     if (!this.connected || this.discovered) return;
     var client = this;
     var prefix = (this.config.topicPrefix || 'vetro')+'/'+this.identity;
-    var deviceName = this.config.deviceName || 'Vetro';
+    var deviceName = this.config.deviceName || 'ClearView';
 
     var device = {
         identifiers: [this.identity],

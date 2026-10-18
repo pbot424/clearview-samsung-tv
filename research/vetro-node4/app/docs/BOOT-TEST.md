@@ -16,7 +16,7 @@ export TV_IP=192.0.2.10  # replace with your TV address
 python3 scripts/boot-test.py preflight
 ```
 
-The TV must be on and Vetro already reachable. Preflight does not start a capture.
+The TV must be on and ClearView already reachable. Preflight does not start a capture.
 The recorder takes a fresh baseline before printing `ARMED`.
 If the baseline is unreadable, it stops: do not reboot until `ARMED` appears.
 
@@ -29,7 +29,7 @@ python3 -u scripts/boot-test.py record --mode passive --out /tmp/vetro-boot-pass
 1. Wait for `ARMED`.
 2. Type `r` and Enter just before requesting the reboot with your usual method.
    Standby alone may not reboot the system: the tool checks the boot ID.
-3. Do not open Vetro or other apps during startup.
+3. Do not open ClearView or other apps during startup.
 4. When `newBoot`, `newService` and `agentConnected` appear, wait another
    20 seconds, then type `q` and Enter.
 5. Check for `New boot confirmed: True` and `Capture complete: True`.
@@ -43,7 +43,7 @@ python3 -u scripts/boot-test.py record --mode visual --out /tmp/vetro-boot-visua
 ```
 
 1. Wait for `ARMED`; mark `r` and reboot.
-2. As soon as the remote responds, mark `o` and open Vetro.
+2. As soon as the remote responds, mark `o` and open ClearView.
 3. When **ok apps** appears, type `a` and Enter.
 4. When **ok packages** appears, type `p` and Enter.
 5. When the report-sent message appears, type `f` and Enter.
@@ -52,8 +52,8 @@ python3 -u scripts/boot-test.py record --mode visual --out /tmp/vetro-boot-visua
 Markers are human observations: they include reaction time and up to about one
 polling cycle before the terminal reads them. A screen recording, if available,
 helps correct the markers; it is not needed for test A.
-Opening Vetro may start its service earlier, so interpret the two tests separately.
-Do not change settings or reinstall Vetro between captures.
+Opening ClearView may start its service earlier, so interpret the two tests separately.
+Do not change settings or reinstall ClearView between captures.
 
 ## Results and interpretation
 

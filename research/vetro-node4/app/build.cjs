@@ -7,7 +7,7 @@ function collectFiles() {
     const names = ['config.xml', 'index.html', 'icon.png', 'native/TvState.dll', 'native/TvState.runtimeconfig.json'].concat(
         fs.readdirSync(path.join(__dirname,'service')).filter(name => name.endsWith('.js')).sort().map(name => 'service/' + name));
     const metadata = Object.assign({}, require('./service/build-info.js'));
-    let revision = process.env.VETRO_SOURCE_REVISION;
+    let revision = process.env.CLEARVIEW_SOURCE_REVISION || process.env.VETRO_SOURCE_REVISION;
     if (!revision) {
         try { revision = require('child_process').execFileSync('git', ['rev-parse', 'HEAD'], {cwd: __dirname, stdio: ['ignore','pipe','ignore']}).toString().trim(); } catch (_) {}
     }
@@ -31,7 +31,7 @@ function zip(files) {
     return Buffer.concat(chunks.concat([table,end]));
 }
 function build() {
-    const output = process.env.OUT ? path.resolve(process.env.OUT) : path.join(__dirname,'dist','vetro-app-only.wgt');
+    const output = process.env.OUT ? path.resolve(process.env.OUT) : path.join(__dirname,'dist','clearview-app-only.wgt');
     fs.mkdirSync(path.dirname(output),{recursive:true}); fs.writeFileSync(output,zip(collectFiles()));
     console.log('App-only unsigned package: ' + output);
     return output;

@@ -1,3 +1,5 @@
+> Upstream Vetro historical record. Retained for provenance; these results do not verify a ClearView release or TU7000 compatibility.
+
 # Release audit — 2026-10-11
 
 ## Scope and results

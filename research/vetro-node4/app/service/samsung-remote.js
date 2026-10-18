@@ -10,7 +10,7 @@ var net = require('net');
 var tls = require('tls');
 var crypto = require('crypto');
 
-var APP_NAME = 'Vetro';
+var APP_NAME = 'ClearView';
 
 function buildPath(name, token) {
     return '/api/v2/channels/samsung.remote.control?name=' +

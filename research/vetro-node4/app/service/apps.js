@@ -60,7 +60,7 @@ function normalize(apps, packages) {
 
 function classification(r) {
     function result(category,source,reason){return {category:category,categorySource:source,categoryReason:reason};}
-    if(r.protected)return result('protected','policy','Protected by Vetro');
+    if(r.protected)return result('protected','policy','Protected by ClearView');
     if(r.kind==='ads'||r.kind==='privacy')return result(r.kind,'policy','Known advertising and privacy package IDs');
     var pkg=r.packageId||'',known={
         'com.samsung.tv.alexa-client':'voice','com.samsung.tv.wakeup-engine-alexa':'voice',

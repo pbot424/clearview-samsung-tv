@@ -1,6 +1,6 @@
 # Community report analysis
 
-The issue form is `.github/ISSUE_TEMPLATE/log_report.yml`. It requests model, firmware, Vetro version and one JSON upload. GitHub issue forms support an upload field; see the [official form schema](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/syntax-for-githubs-form-schema#upload). If that preview feature is unavailable, use the fallback issue instructions in the root README.
+The issue form is `.github/ISSUE_TEMPLATE/log_report.yml`. It requests model, firmware, ClearView version and one JSON upload. GitHub issue forms support an upload field; see the [official form schema](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/syntax-for-githubs-form-schema#upload). If that preview feature is unavailable, use the fallback issue instructions in the root README.
 
 `analyze-log.yml` runs for opened/edited issues matching the report title and heading. It checks out the default branch's parser with a pinned checkout action and no persisted credentials. Issue text is read through `GITHUB_EVENT_PATH`, never interpolated into shell commands. No pull-request code, attached script, executable or archive is run.
 
@@ -11,7 +11,7 @@ The comment step alone receives the scoped token (`contents: read`, `issues: wri
 Local use:
 
 ```sh
-python3 .github/scripts/parse_log.py --file /path/to/vetro-diagnostics.json --output /tmp/diagnostic-comment.md
+python3 .github/scripts/parse_log.py --file /path/to/clearview-diagnostics.json --output /tmp/diagnostic-comment.md
 python3 .github/scripts/test_parse_log.py
 ```
 

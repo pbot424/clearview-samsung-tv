@@ -3,7 +3,7 @@
 // Minimal MQTT 3.1.1 client over TCP or verified TLS, zero dependencies.
 //
 // Runs on the TV's Node v12 runtime inside the on-boot service. Supports the
-// subset Vetro needs: CONNECT (username/password), QoS 0 PUBLISH, SUBSCRIBE,
+// subset ClearView needs: CONNECT (username/password), QoS 0 PUBLISH, SUBSCRIBE,
 // PINGREQ keepalive, and incoming PUBLISH (QoS 0 and 1, the latter ACK'd).
 // Clean sessions; retained flag exposed to callers, no session persistence.
 

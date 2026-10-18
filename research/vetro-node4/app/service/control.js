@@ -1,6 +1,6 @@
 'use strict';
 
-// Remote control for Vetro: key injection through /usr/bin/input_keyevent
+// Remote control for ClearView: key injection through /usr/bin/input_keyevent
 // on the Q80A. The tool forwards the key NAME to
 // enlightenment over D-Bus (org.enlightenment.wm Test.EventKey), so keys are
 // X keysyms — XF86* names from the TV keyrouter config plus standard X

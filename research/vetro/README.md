@@ -1,3 +1,5 @@
+> Archived upstream Vetro baseline, retained for attribution and reproducibility. The working ClearView application is in [../vetro-node4/](../vetro-node4/README.md). Original documentation and screenshots below describe upstream hardware and releases.
+
 <p align="center">
   <img src="app/icon.png" alt="Vetro app icon" width="112">
 </p>

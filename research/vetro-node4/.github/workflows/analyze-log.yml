@@ -10,7 +10,7 @@ concurrency:
   cancel-in-progress: true
 jobs:
   analyze:
-    if: startsWith(github.event.issue.title, '[Log report]') && contains(github.event.issue.body, '### Vetro diagnostic report')
+    if: startsWith(github.event.issue.title, '[Log report]') && contains(github.event.issue.body, '### ClearView diagnostic report')
     runs-on: ubuntu-latest
     timeout-minutes: 3
     steps:

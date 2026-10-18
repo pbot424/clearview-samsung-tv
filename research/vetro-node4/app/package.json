@@ -1,8 +1,8 @@
 {
-  "name": "vetro-app",
+  "name": "clearview-app",
   "version": "0.2.3",
   "private": true,
-  "description": "Vetro feature development, independent of the TV integration implementation.",
+  "description": "ClearView feature development, independent of the TV integration implementation.",
   "scripts": {
     "test": "node tests/run.cjs",
     "start": "node service/main.js",

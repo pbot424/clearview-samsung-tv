@@ -1,4 +1,4 @@
-# Vetro application
+# ClearView application
 
 Feature development lives here, independently of the optional privileged integration.
 See the [project README](../README.md) for features, installation, compatibility,
@@ -7,7 +7,7 @@ performance limitations, credits and support.
 ```sh
 npm test
 node service/main.js
-OUT=/tmp/vetro-app-only.wgt node build.cjs
+OUT=/tmp/clearview-app-only.wgt node build.cjs
 ```
 
 Local mode uses the unavailable-device platform adapter. The standalone package
@@ -28,5 +28,5 @@ The app catalog (`service/app-facts.js`) is generated from a private firmware du
 python3 scripts/build-app-catalog.py /path/to/dump/rootfs /tmp/app-facts-full.json --compact service/app-facts.js
 ```
 
-The default management port is 8099 (`VETRO_PORT` overrides it). TV-specific
+The default management port is 8099 (`CLEARVIEW_PORT` overrides it; `VETRO_PORT` remains a legacy alias). TV-specific
 operations require the optional adapter and supported firmware/signing privileges.

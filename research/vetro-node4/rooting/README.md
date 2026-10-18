@@ -29,7 +29,7 @@ and writes the integration WGT. It never modifies app sources or deploys to a TV
 Local historical SDK/tools are not needed by the builder; use official tooling
 for installation. See the [project installation guide](../README.md).
 
-The currently installed integration reacquired an authenticated UID-0 agent after
+The upstream Vetro integration reacquired an authenticated UID-0 agent after
 one owner-confirmed cold boot without a manual launch on 2026-10-11. Latest source
 changes have not been deployed. This observation is specific to the Q80A/firmware
 in the [release audit](../app/docs/RELEASE-AUDIT.md), not a universal guarantee.

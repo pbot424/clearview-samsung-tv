@@ -1,6 +1,6 @@
 'use strict';
 // What each package does and whether a home TV needs it. Areas and roles are
-// Vetro's assessment from the Q80A firmware manifests (app-facts.js) and device
+// ClearView's assessment from the Q80A firmware manifests (app-facts.js) and device
 // tests; they are guidance, not a guarantee for other models or firmware.
 var facts = require('./app-facts.js');
 
@@ -59,7 +59,7 @@ var PURPOSE = {
     'adplatform': 'Advertising player.',
     'com.samsung.tv.adplayer': 'Advertising player.',
     'com.samsung.tizen.samsung-analytics': 'Collects and uploads Samsung usage analytics.',
-    'com.samsung.tv.coba.adagent': 'Smart Hub advertising agent. Home loads part of it, so Vetro protects it.',
+    'com.samsung.tv.coba.adagent': 'Smart Hub advertising agent. Home loads part of it, so ClearView protects it.',
     'com.samsung.tv.pisa-service': 'Personalised content and advertising service for Smart Hub.',
     'com.samsung.tv.coba.privacy_app': 'Privacy choices screen.',
     'tv6pbVMQFF': 'Privacy choices web app.',
@@ -94,7 +94,7 @@ var PURPOSE = {
     'org.tizen.provider-resetpsid': 'Resets the advertising identifier (PSID) from the privacy menu.',
     'com.samsung.tv.ContentsBrowser': 'Universal Guide: content recommendations from streaming services.',
     'capi-bnr-tv': 'Backup and restore of settings for automatic setup.',
-    'vetrotvapp': 'Vetro. Protected.'
+    'vetrotvapp': 'ClearView. Protected.'
 };
 
 function areaOf(packageId, appId) {
